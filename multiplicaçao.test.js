@@ -1,4 +1,4 @@
-const multiplicar=require ('./multiplicaçao');
+const multiplicar=require ('./multiplicacao');
 
 test ("deve multiplicar dois numeros inteiros positivo", ()=>{
  expect(multiplicar (3,2)).toBe(6)})
@@ -7,10 +7,9 @@ test ("deve multiplicar dois numeros inteiros positivo", ()=>{
     expect(multiplicar (3,2)).toBe(6)})
 
     test ("deve multiplicar 1 por 5 e retornar 5", ()=>{
-        expect(multiplicar (3,2,)).toBe(5)})
-        test ("deve falhar ao verificar 3*2", ()=>{
-            expect(multiplicar (3,2,)).toBe(5)})
+        expect(multiplicar (1,5)).toBe(5)})
+        
           
 
-
-            
+        test ("deve falhar ao verificar 3*2", ()=>{
+            expect(multiplicar (3,2)).toBe(5)})
