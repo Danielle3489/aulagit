@@ -11,3 +11,6 @@ test ("deve multiplicar dois numeros inteiros positivo", ()=>{
         test ("deve falhar ao verificar 3*2", ()=>{
             expect(multiplicar (3,2,)).toBe(5)})
           
+
+
+            
