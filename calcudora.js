@@ -12,9 +12,8 @@ return a-b;}
 
 module.exports ={
 soma:soma,
-module.exports={
-    dividir:dividir
-  module.exports={
-    multiplicar:multiplicar
-    module.exports={
-    subtrair:subtrair
+    dividir:dividir,
+    multiplicar:multiplicar,
+    subtrair:subtrair,
+
+}
