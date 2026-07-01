@@ -3,45 +3,55 @@ const biblioteca = {
   livros: [], // Array (lista) para guardar os livros
 
   // Função para adicionar um novo livro
-  adicionarlivro(nome, biografia, autor, personagem, enredo, capitulo, pagina) {
+  adicionarlivro(nome,autor,genero,ano) {
     const livro = {
       nome: nome,
-      biografia: biografia,
-      autor: autor,
-      personagem: personagem,
-      enredo: enredo, // Corrigido de "enredor"
-      capitulo: capitulo, // Corrigido de "capitulos"
-      pagina: pagina,
-      alugado: false,
+    autor:autor
+    genero:genero
+    ano:ano
+  
+      alugado: false, // Começa como "não alugado"
       vezesalugado: 0,
-    }; // Objeto livro
+    };
     this.livros.push(livro);
-    console.log("Livro adicionado:", livro.nome);
+    console.log(`Livro "${livro.nome}" adicionado com sucesso!`);
   },
 
   // Função para mostrar todos os livros da biblioteca
   mostralivro() {
-    console.log("--- Livros na Biblioteca ---");
-    for (let i = 0; i < this.livros.length; i++) { // Sintaxe do loop corrigida
-      const livro = this.livros[i];
-      console.log(livro);
+    console.log("\n--- Livros na Biblioteca ---");
+    if (this.livros.length === 0) {
+      console.log("A biblioteca está vazia.");
+    } else {
+      this.livros.forEach(livro => {
+        console.log(livro);
+      });
     }
-    console.log("--------------------------");
-  }
-};
+    console.log("--------------------------\n");
+  },
 
-// --- Exemplo de Uso ---
+  // <<-- NOVA FUNÇÃO PARA ALUGAR -->>
+  alugarLivro(nome) {
+    for (let i=0;i<this.livros.length;i++){
+const p=this.livros[i]
+if(p.nome=nome){
+  if(p.adicionarlivro==true&&p.estoque>0){
+    p.devolverLivro==false;
+    p.alugado==true;
+    p.vezesalugado+=1
+    p.estoque-+1
+    console.log(nome,"alugado com sucessso")
+    elseif (p.estoque<=0)
+    console.log ("0"+nome+"não está disponivel")
+    return;
+  }else{
+  console.log("0"+nome+'ja esta alugado')
+return;}
+}
+}
+console.log ("0+nome+nao esta disponivel")
+}
 
-// 1. Adicionando o livro "O Pequeno Príncipe"
-biblioteca.adicionarlivro(
-  "O Pequeno Príncipe",
-  "Biografia do autor: Antoine de Saint-Exupéry foi um escritor, jornalista e piloto francês.",
-  "Antoine de Saint-Exupéry",
-  "O Pequeno Príncipe, a Raposa, a Rosa",
-  "A história de um piloto que encontra um jovem príncipe que viajou entre planetas.",
-  27,
-  96
-);
+}
 
-// 2. Mostrando a lista de livros para confirmar que foi adicionado
-biblioteca.mostralivro();
+biblioteca.adicionarlivro("pequeno principe","antonie de saint-exupery","infantil","1943")
