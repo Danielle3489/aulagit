@@ -3,22 +3,21 @@ const biblioteca = {
   livros: [], // Array (lista) para guardar os livros
 
   // Função para adicionar um novo livro
-  adicionarlivro(nome,autor,genero,ano) {
+  adicionarLivro(nome, autor, genero, ano) {
     const livro = {
       nome: nome,
-    autor:autor
-    genero:genero
-    ano:ano
-  
+      autor: autor,
+      genero: genero,
+      ano: ano,
       alugado: false, // Começa como "não alugado"
-      vezesalugado: 0,
+      vezesAlugado: 0,
     };
     this.livros.push(livro);
     console.log(`Livro "${livro.nome}" adicionado com sucesso!`);
   },
 
   // Função para mostrar todos os livros da biblioteca
-  mostralivro() {
+  mostrarLivros() {
     console.log("\n--- Livros na Biblioteca ---");
     if (this.livros.length === 0) {
       console.log("A biblioteca está vazia.");
@@ -30,28 +29,43 @@ const biblioteca = {
     console.log("--------------------------\n");
   },
 
-  // <<-- NOVA FUNÇÃO PARA ALUGAR -->>
+  // Função para alugar um livro
   alugarLivro(nome) {
-    for (let i=0;i<this.livros.length;i++){
-const p=this.livros[i]
-if(p.nome=nome){
-  if(p.adicionarlivro==true&&p.estoque>0){
-    p.devolverLivro==false;
-    p.alugado==true;
-    p.vezesalugado+=1
-    p.estoque-+1
-    console.log(nome,"alugado com sucessso")
-    elseif (p.estoque<=0)
-    console.log ("0"+nome+"não está disponivel")
-    return;
-  }else{
-  console.log("0"+nome+'ja esta alugado')
-return;}
-}
-}
-console.log ("0+nome+nao esta disponivel")
-}
+    const livro = this.livros.find(l => l.nome === nome);
+    if (livro) {
+      if (!livro.alugado) {
+        livro.alugado = true;
+        livro.vezesAlugado += 1;
+        console.log(`Livro "${nome}" alugado com sucesso.`);
+      } else {
+        console.log(`Livro "${nome}" já está alugado.`);
+      }
+    } else {
+      console.log(`Livro "${nome}" não encontrado na biblioteca.`);
+    }
+  },
 
-}
+  // Função para devolver um livro
+  devolverLivro(nome) {
+    const livro = this.livros.find(l => l.nome === nome);
+    if (livro) {
+      if (livro.alugado) {
+        livro.alugado = false;
+        console.log(`Livro "${nome}" devolvido com sucesso.`);
+      } else {
+        console.log(`Livro "${nome}" não estava alugado.`);
+      }
+    } else {
+      console.log(`Livro "${nome}" não encontrado na biblioteca.`);
+    }
+  }
+};
 
-biblioteca.adicionarlivro("pequeno principe","antonie de saint-exupery","infantil","1943")
+biblioteca.adicionarLivro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", "Infantil", "1943");
+biblioteca.mostrarLivros();
+biblioteca.alugarLivro("O Pequeno Príncipe");
+biblioteca.mostrarLivros();
+biblioteca.devolverLivro("O Pequeno Príncipe");
+biblioteca.alugarLivro("Livro Inexistente");
+biblioteca.devolverLivro("pequeno principe")
+biblioteca.mostrarLivros();
